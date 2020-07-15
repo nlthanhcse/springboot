@@ -6,11 +6,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.List;
 
 @SpringBootApplication
+@ComponentScan(basePackages = "com.springbootjap.springbootjpa.*")
 public class SpringbootjpaApplication implements CommandLineRunner {
 
     @Autowired
@@ -33,12 +36,13 @@ public class SpringbootjpaApplication implements CommandLineRunner {
     }
 
     private void getStudentsByNameLike() {
-        List<Student> students = this.studentService. getStudentsByNameLike("%a%");
+        List<Student> students = this.studentService.getStudentsByNameLike("%a%");
         students.forEach(System.out::println);
     }
 
     private void getStudentsByNameLikeAndAgeGreaterThan() {
-        List<Student> students = this.studentService. getStudentsByNameLikeAndAgeGreaterThan("%a%", 25);
+        List<Student> students = this.studentService.getStudentsByNameLikeAndAgeGreaterThan("%a%", 25);
         students.forEach(System.out::println);
     }
 }
+
