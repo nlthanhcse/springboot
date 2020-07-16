@@ -22,8 +22,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/userapi/**")
                 .hasAnyRole("ADMIN", "USER")
-        .and().formLogin()
-                ;
+                .and().
+                formLogin()
+                .loginPage("/test/login");
     }
 
     @Autowired
